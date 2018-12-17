@@ -171,9 +171,9 @@ rm -rf axecore-1.1.8-x86_64-linux-gnu.tar.gz
  stop_daemon
  
  # Deploy binaries to /usr/local/bin
- sudo rm ~/AXE-MN-etup/axecore-1.1.8/bin/axe-qt
- sudo rm ~/AXE-MN-etup/axecore-1.1.8/bin/test*
- sudo cp ~/AXE-MN-etup/axecore-1.1.8/bin/axe* /usr/local/bin/
+ sudo rm ~/AXE-MN-setup/axecore-1.1.8/bin/axe-qt
+ sudo rm ~/AXE-MN-setup/axecore-1.1.8/bin/test*
+ sudo cp ~/AXE-MN-setup/axecore-1.1.8/bin/axe* /usr/local/bin/
  sudo chmod 755 -R ~/AXE-MN-setup
  sudo chmod 755 /usr/local/bin/axe*
  
