@@ -267,7 +267,7 @@ sudo apt-get -y install virtualenv
       cd ~/.axecore
 	  git clone https://github.com/AXErunners/sentinel.git
 
-    cd ~/.axecore./sentinel
+    cd ~/.axecore/sentinel
       virtualenv venv
       ./venv/bin/pip install -r requirements.txt
       ./venv/bin/python bin/sentinel.py
