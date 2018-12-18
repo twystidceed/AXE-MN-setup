@@ -8,7 +8,7 @@
 <li>git clone https://github.com/twystidceed/AXE-MN-setup.git && cd AXE-MN-setup && bash axe-setup-swap.sh
 <br><br><br>
 <li> For installation on VPS with preset swap use this line - 
-<br> This is typical for more specialized nodes for advanced users - Copy the entire line below
+<li> This is typical for more specialized nodes for advanced users - Copy the entire line below
 <li>git clone https://github.com/twystidceed/AXE-MN-setup.git && cd AXE-MN-setup && bash axe-setup.sh
 <br><br>
 
