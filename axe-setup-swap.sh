@@ -190,12 +190,12 @@ rm -rf axecore-1.1.8-x86_64-linux-gnu.tar.gz
  
  stop_daemon
  
- # Deploy binaries to /usr/local/bin
+ # Deploy binaries to /usr/bin
  sudo rm ~/AXE-MN-setup/axecore-1.1.8/bin/axe-qt
  sudo rm ~/AXE-MN-setup/axecore-1.1.8/bin/test*
- sudo cp ~/AXE-MN-setup/axecore-1.1.8/bin/axe* /usr/local/bin/
+ sudo cp ~/AXE-MN-setup/axecore-1.1.8/bin/axe* /usr/bin/
  sudo chmod 755 -R ~/AXE-MN-setup
- sudo chmod 755 /usr/local/bin/axe*
+ sudo chmod 755 /usr/bin/axe*
  
  # Deploy masternode monitoring script
  cp ~/AXE-MN-setup/axemon.sh /usr/local/bin
