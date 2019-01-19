@@ -236,13 +236,13 @@ listen=1
 server=1
 daemon=1
 logintimestamps=1
-maxconnections=24
+maxconnections=12
 externalip=$publicip:$PORT
 masternode=1
 masternodeprivkey=$genkey
-addnode=188.227.120.159:9937
-addnode=45.76.86.200:9937
-addnode=5.189.173.23:9937
+addnode=104.248.76.224:9937
+addnode=3.17.19.157:9937
+addnode=212.237.24.128:9937
 EOF
 
 #Finally, starting axe daemon with new axe.conf
