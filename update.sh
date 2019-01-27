@@ -1,6 +1,8 @@
 #!/bin/bash
 
-#stop daemon if it is running 
+ 
+#Delay script execution for N seconds
+function delay { echo -e "${GREEN}Sleep for $1 seconds...${NC}"; sleep "$1"; }
 
 #Stop daemon if it's already running
 function stop_daemon {
