@@ -21,6 +21,8 @@ function stop_daemon {
     fi
 }
 
+stop_daemon
+
 #Remove old binaries
 sudo rm /usr/bin/axe*
 
