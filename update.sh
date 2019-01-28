@@ -24,9 +24,17 @@ function stop_daemon {
 }
 
 stop_daemon
+echo -e "Removing old data 
+This saves the axe.conf file intact so genkey should not change"
+delay 10
 
 #Remove old binaries
 sudo rm /usr/bin/axe*
+cd ~
+cd ./axecore
+sudo rm -R chainstate blocks backups
+sudo rm w* s* p* n* m* i* g* f* d* d* b*
+sudo rm .lock
 
 echo -e "Downloading and installing new AXECORE Binaries"
 #Download new Binaries
