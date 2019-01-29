@@ -32,9 +32,9 @@ delay 10
 sudo rm /usr/bin/axe*
 cd ~
 cd ./axecore
-sudo rm -R chainstate blocks backups
-sudo rm w* s* p* n* m* i* g* f* d* d* b*
-sudo rm .lock
+#sudo rm -R chainstate blocks backups
+#sudo rm w* s* p* n* m* i* g* f* d* d* b*
+sudo rm mncache*
 
 echo -e "Downloading and installing new AXECORE Binaries"
 #Download new Binaries
