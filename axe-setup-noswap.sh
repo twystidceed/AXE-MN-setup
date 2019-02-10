@@ -253,6 +253,7 @@ sleep 5
 echo -ne '[##############     ] (72%)\r'
 sleep 10
 echo -ne '[###################] (100%)\r'
+axe-cli addnode 198.13.50.26:9937 onetry
 echo -ne '\n'
 
 #Install Sentinel 
