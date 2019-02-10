@@ -1,4 +1,4 @@
-# AXE-MN-setup
+# AXE-MN-setup UBUMTU 16.04 ONLY!!
 <br>
 <li>sudo apt-get update
 <li>sudo apt-get install git
