@@ -39,14 +39,14 @@ sudo rm mncache*
 echo -e "Downloading and installing new AXECORE Binaries"
 #Download new Binaries
  cd ~
-wget https://github.com/AXErunners/axe/releases/download/v1.2.0/axecore-1.2.0-x86_64-linux-gnu.tar.gz
-tar -xzf axecore-1.2.0-x86_64-linux-gnu.tar.gz -C ~/AXE-MN-setup
-rm -rf axecore-1.2.0-x86_64-linux-gnu.tar.gz
+wget https://github.com/AXErunners/axe/releases/download/v1.2.1/axecore-1.2.1-x86_64-linux-gnu.tar.gz
+tar -xzf axecore-1.2.1-x86_64-linux-gnu.tar.gz -C ~/AXE-MN-setup
+rm -rf axecore-1.2.1-x86_64-linux-gnu.tar.gz
  
  # Deploy binaries to /usr/bin
- sudo rm ~/AXE-MN-setup/axecore-1.2.0/bin/axe-qt
- sudo rm ~/AXE-MN-setup/axecore-1.2.0/bin/test*
- sudo cp ~/AXE-MN-setup/axecore-1.2.0/bin/axe* /usr/bin/
+ sudo rm ~/AXE-MN-setup/axecore-1.2.1/bin/axe-qt
+ sudo rm ~/AXE-MN-setup/axecore-1.2.1/bin/test*
+ sudo cp ~/AXE-MN-setup/axecore-1.2.1/bin/axe* /usr/bin/
  sudo chmod 755 -R ~/AXE-MN-setup
  sudo chmod 755 /usr/bin/axe*
  
