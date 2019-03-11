@@ -1,4 +1,4 @@
-# AXE-MN-setup UBUNTU 16.04 ONLY!!
+# AXE-MN-setup UBUNTU 16.04 ONLY!! V1.2.2
 <br>
 <li>sudo apt-get update
 <li>sudo apt-get install git
