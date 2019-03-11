@@ -76,6 +76,23 @@ fi
 sleep .5
 clear
 
+
+
+genkey=$3
+#Enter the new BLS genkey
+echo -e "Enter your BLS Key"
+	read -e -p "Enter your BLS key:" genkey3;
+              read -e -p "Confirm your BLS key: " genkey4;
+
+#Confirming match
+  if [ $genkey3 = $genkey4 ]; then
+     echo -e "${GREEN}MATCH! ${NC} \a" 
+else 
+     echo -e "${RED} Error: BLS key do not match. Try again...${NC} \a";exit 1
+fi
+sleep .5
+clear
+
 # Determine primary public IP address
 dpkg -s dnsutils 2>/dev/null >/dev/null || sudo apt-get -y install dnsutils
 publicip=$(dig +short myip.opendns.com @resolver1.opendns.com)
@@ -240,6 +257,7 @@ maxconnections=10
 externalip=$publicip:$PORT
 masternode=1
 masternodeprivkey=$genkey
+masternodeblsprivkey=$genkey3
 EOF
 
 #Finally, starting axe daemon with new axe.conf
