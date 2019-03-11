@@ -25,53 +25,21 @@ function stop_daemon {
 
 stop_daemon
 echo -e "Removing old data 
-This saves the axe.conf file intact so genkey should not change"
 delay 10
 
 #Remove old binaries
 sudo rm /usr/bin/axe*
-cd ~
-cd ./axecore
-#sudo rm -R chainstate blocks backups
-#sudo rm w* s* p* n* m* i* g* f* d* d* b*
-sudo rm mncache*
+sudo rm /usr/local/bin/axe*
+sudo rm ~/AXE-MN-setup
+sudo rm -rf .axecore
+delay 10
 
-echo -e "Downloading and installing new AXECORE Binaries"
-#Download new Binaries
- cd ~
-wget https://github.com/AXErunners/axe/releases/download/v1.2.1/axecore-1.2.1-x86_64-linux-gnu.tar.gz
-tar -xzf axecore-1.2.1-x86_64-linux-gnu.tar.gz -C ~/AXE-MN-setup
-rm -rf axecore-1.2.1-x86_64-linux-gnu.tar.gz
- 
- # Deploy binaries to /usr/bin
- sudo rm ~/AXE-MN-setup/axecore-1.2.1/bin/axe-qt
- sudo rm ~/AXE-MN-setup/axecore-1.2.1/bin/test*
- sudo cp ~/AXE-MN-setup/axecore-1.2.1/bin/axe* /usr/bin/
- sudo chmod 755 -R ~/AXE-MN-setup
- sudo chmod 755 /usr/bin/axe*
- 
- echo -e "Starting Axe Core 1.2.0"
-  #Starting daemon first time just to generate masternode private key
-    axed -daemon
-    #axed -reindex -daemon
-echo -ne '[##                 ] (15%)\r'
-sleep 6
-echo -ne '[######             ] (30%)\r'
-sleep 9
-echo -ne '[########           ] (45%)\r'
-sleep 6
-echo -ne '[############       ] (67%)\r'
-sleep 9
-echo -ne '[################   ] (72%)\r'
-sleep 10
-echo -ne '[###################] (100%)\r'
-echo -ne '\n'
+echo -e "Downloading install script and installing fresh masternode"
+delay 3
+echo -e "This will require you to enter your masternode private key AND the new BLS keys to complete"
+delay 5
+echo -e "getting updates before install"
+sudo apt-get -y update
+sudo git clone https://github.com/twystidceed/AXE-MN-setup.git && cd AXE-MN-setup && bash axe-setup-swap.sh
 
-
-echo -e "Update Complete !!
-You may have to reactivate in wallet. Let sync complete and check local wallet!!
-"
-delay 30
-# Run axemon.sh
-axemon.sh
 
