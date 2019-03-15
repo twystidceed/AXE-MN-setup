@@ -13,9 +13,4 @@
 <li>Copy the entire line below and paste into your ssh session or vps terminal
 <li>git clone https://github.com/twystidceed/AXE-MN-setup.git && cd AXE-MN-setup && bash axe-setup-noswap.sh
 <br><br>
-  <br>
-<li><b>IF YOU ARE ALREADY USING MY SCRIPT AND ONLY NEED TO UPDATE TO NEW VERSION 1.2.2</b>
- <li> This will remove all existing masternode and replace with a fresh install and fresh sync -
-   <li> you will be required to re-enter your masternode private key and the new BLS key upon script execution
-<li>sudo rm -R AXE-MN-setup && git clone https://github.com/twystidceed/AXE-MN-setup.git && cd AXE-MN-setup && bash update.sh
 
