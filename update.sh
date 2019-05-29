@@ -60,14 +60,13 @@ sudo apt-get -y update
 
 #remove existing daemon 
  stop_daemon
-rm ~/AXE-MN-setup/axed axe-tx axe-cli
+rm -rf ~/AXE-MN-setup/axecore*
 rm /usr/bin/axe*
 
 #Installing Daemon
  cd ~
 wget https://github.com/AXErunners/axe/releases/download/v1.4.0/axecore-1.4.0-x86_64-linux-gnu.tar.gz
-rm ~/AXE-MN-setup/axed axe-tx axe-cli
-tar -xzf axecore-1.4.0-x86_64-linux-gnu.tar.gz -C ~/AXE-MN-update
+tar -xzf axecore-1.4.0-x86_64-linux-gnu.tar.gz -C ~/AXE-MN-setup
 rm -rf axecore-1.4.0-x86_64-linux-gnu.tar.gz
  
  # Deploy binaries to /usr/bin
