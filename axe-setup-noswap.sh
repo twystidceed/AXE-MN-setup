@@ -1,5 +1,5 @@
 #!/bin/bash
-# AXE Masternode Setup Script V1.0 for Ubuntu 16.04 LTS
+# AXE Masternode Setup Script V2.0 for Ubuntu 16.04 LTS
 #
 # Script will attempt to auto detect primary public IP address
 # and generate masternode private key unless specified in command line
@@ -54,34 +54,10 @@ else
 fi
 
 
-#Process command line parameters
-# genkey=$1
-
-# clear
-
-# echo -e "${YELLOW}AXE Coin DIP003 Masternode Setup Script V1 for Ubuntu 16.04 LTS${NC}"
-# echo "Do you want me to generate a masternode private key for you? [y/n]"
-  # read DOSETUP
-# if [[ $DOSETUP =~ "n" ]] ; then
-          # read -e -p "Enter your private key:" genkey;
-              # read -e -p "Confirm your private key: " genkey2;
-# fi
-
-#Confirming match
-  # if [ $genkey = $genkey2 ]; then
-     # echo -e "${GREEN}MATCH! ${NC} \a" 
-# else 
-     # echo -e "${RED} Error: Private keys do not match. Try again or let me generate one for you...${NC} \a";exit 1
-# fi
-# sleep .5
-# clear
-
-
-
 genkey=$3
 #Enter the new BLS genkey
 clear
-echo -e "${YELLOW}AXE Coin DIP003 Masternode Setup Script V1 for Ubuntu 16.04 LTS${NC}"
+echo -e "${YELLOW}AXE Coin DIP003 Masternode Setup Script V2 for Ubuntu 16.04 LTS${NC}"
 	read -e -p "Enter your BLS key:" genkey3;
               read -e -p "Confirm your BLS key: " genkey4;
 
@@ -205,16 +181,15 @@ rm -rf axecore-1.4.0.1-x86_64-linux-gnu.tar.gz
 
 echo -e "${YELLOW}Creating axe.conf...${NC}"
 
-# If genkey was not supplied in command line, we will generate private key on the fly
-if [ -z $genkey ]; then
-    cat <<EOF > ~/.axecore/axe.conf
+
+cat <<EOF > ~/.axecore/axe.conf
 rpcuser=$rpcuser
 rpcpassword=$rpcpassword
 EOF
 
     sudo chmod 755 -R ~/.axecore/axe.conf
 
-    #Starting daemon first time just to generate masternode private key
+    #Starting daemon first time
     axed -daemon
 echo -ne '[##                 ] (15%)\r'
 sleep 6
@@ -228,15 +203,6 @@ echo -ne '[################   ] (72%)\r'
 sleep 10
 echo -ne '[###################] (100%)\r'
 echo -ne '\n'
-
-    #Generate masternode private key
-    # echo -e "${YELLOW}Generating masternode private key...${NC}"
-    # genkey=$(axe-cli masternode genkey)
-    # if [ -z "$genkey" ]; then
-        # echo -e "${RED}ERROR: Can not generate masternode private key.${NC} \a"
-        # echo -e "${RED}ERROR: Reboot VPS and try again or supply existing genkey as a parameter.${NC}"
-        # exit 1
-    # fi
     
     #Stopping daemon to create axe.conf
     stop_daemon
@@ -248,7 +214,6 @@ rpcuser=$rpcuser
 rpcpassword=$rpcpassword
 rpcport=$RPC
 rpcallowip=127.0.0.1
-onlynet=ipv4
 listen=1
 server=1
 daemon=1
@@ -308,46 +273,22 @@ echo -e "=======================================================================
 ${YELLOW}Masternode setup is complete!${NC}
 ========================================================================
 Masternode was installed with VPS IP Address: ${YELLOW}$publicip${NC}
-Masternode Private Key: ${YELLOW}$genkey${NC}
-Now you can add the following string to the masternode.conf file
-for your Hot Wallet (the wallet with your AXE collateral funds):
+Masternode BLS Key: ${YELLOW}$genkey3${NC}
 ======================================================================== \a"
-echo -e "${YELLOW}mn1 $publicip:$PORT $genkey TxId TxIdx${NC}"
-echo -e "========================================================================
-Use your mouse to copy the whole string above into the clipboard by
-tripple-click + single-click (Dont use Ctrl-C) and then paste it 
-into your ${YELLOW}masternode.conf${NC} file and replace:
-    ${YELLOW}mn1${NC} - with your desired masternode name (alias)
-    ${YELLOW}TxId${NC} - with Transaction Id from masternode outputs
-    ${YELLOW}TxIdx${NC} - with Transaction Index (0 or 1)
-     Remember to save the masternode.conf and restart the wallet!
-To introduce your new masternode to the AXE network, you need to
-issue a masternode start command from your wallet, which proves that
-the collateral for this node is secured."
 
 clear_stdin
 read -p "*** Press any key to continue ***" -n1 -s
 
 echo -e "1) Wait for the node wallet on this VPS to sync with the other nodes
-on the network. Eventually the 'Is Synced' status will change
-to 'true', which will indicate a comlete sync, although it may take
-from several minutes to several hours depending on the network state.
+on the network. Eventually the status 'WAITING_FOR_PROTX' status will change
+to display the ProTx details such as the 'ownerAddress' and other information 
+from the initial setup of the transactions, which will indicate a comlete sync, 
+although it may take several minutes to several hours depending on the network state.
 Your initial Masternode Status may read:
-    ${YELLOW}Node just started, not yet activated${NC} or
-    ${YELLOW}Node  is not in masternode list${NC}, which is normal and expected.
-2) Wait at least until 'IsBlockchainSynced' status becomes 'true'.
-At this point you can go to your wallet and issue a start
-command by either using Debug Console:
-    Tools->Debug Console-> enter: ${YELLOW}masternode start-alias mn1${NC}
-    where ${YELLOW}mn1${NC} is the name of your masternode (alias)
-    as it was entered in the masternode.conf file
-    
-or by using wallet GUI:
-    Masternodes -> Select masternode -> RightClick -> ${YELLOW}start alias${NC}
-Once completed step (2), return to this VPS console and wait for the
-Masternode Status to change to: 'Masternode successfully started'.
-This will indicate that your masternode is fully functional and
-you can celebrate this achievement!
+    ${YELLOW}Waiting for ProTx to appear on-chain${NC}, which is normal and expected.
+2) Wait at least until 'IsBlockchainSynced' status becomes 'true'. The state of the masternode
+status should update to read 'READY'. This indicates complete sync and proper setup.
+At this point you should not have to do any additional steps.
 Currently your masternode is syncing with the AXE network...
 The following screen will display in real-time
 the list of peer connections, the status of your masternode,
@@ -357,8 +298,6 @@ clear_stdin
 read -p "*** Press any key to continue ***" -n1 -s
 
 echo -e "
-${GREEN}...scroll up to see previous screens...${NC}
-Here are some useful commands and tools for masternode troubleshooting:
 ========================================================================
 To view masternode configuration produced by this script in axe.conf:
 ${YELLOW}cat ~/.axecore/axe.conf${NC}
