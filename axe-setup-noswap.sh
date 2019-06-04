@@ -230,13 +230,13 @@ echo -ne '[###################] (100%)\r'
 echo -ne '\n'
 
     #Generate masternode private key
-    echo -e "${YELLOW}Generating masternode private key...${NC}"
-    genkey=$(axe-cli masternode genkey)
-    if [ -z "$genkey" ]; then
-        echo -e "${RED}ERROR: Can not generate masternode private key.${NC} \a"
-        echo -e "${RED}ERROR: Reboot VPS and try again or supply existing genkey as a parameter.${NC}"
-        exit 1
-    fi
+    # echo -e "${YELLOW}Generating masternode private key...${NC}"
+    # genkey=$(axe-cli masternode genkey)
+    # if [ -z "$genkey" ]; then
+        # echo -e "${RED}ERROR: Can not generate masternode private key.${NC} \a"
+        # echo -e "${RED}ERROR: Reboot VPS and try again or supply existing genkey as a parameter.${NC}"
+        # exit 1
+    # fi
     
     #Stopping daemon to create axe.conf
     stop_daemon
@@ -256,7 +256,6 @@ logintimestamps=1
 maxconnections=10
 externalip=$publicip:$PORT
 masternode=1
-masternodeprivkey=$genkey
 masternodeblsprivkey=$genkey3
 EOF
 
