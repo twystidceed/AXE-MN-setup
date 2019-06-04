@@ -80,6 +80,7 @@ fi
 
 genkey=$3
 #Enter the new BLS genkey
+clear
 echo -e "${YELLOW}AXE Coin DIP003 Masternode Setup Script V1 for Ubuntu 16.04 LTS${NC}"
 	read -e -p "Enter your BLS key:" genkey3;
               read -e -p "Confirm your BLS key: " genkey4;
