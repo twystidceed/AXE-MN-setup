@@ -55,33 +55,32 @@ fi
 
 
 #Process command line parameters
-genkey=$1
+# genkey=$1
 
-clear
+# clear
 
-echo -e "${YELLOW}AXE Coin DIP003 Masternode Setup Script V1 for Ubuntu 16.04 LTS${NC}"
-echo "Do you want me to generate a masternode private key for you? [y/n]"
-  read DOSETUP
-if [[ $DOSETUP =~ "n" ]] ; then
-          read -e -p "Enter your private key:" genkey;
-              read -e -p "Confirm your private key: " genkey2;
-fi
+# echo -e "${YELLOW}AXE Coin DIP003 Masternode Setup Script V1 for Ubuntu 16.04 LTS${NC}"
+# echo "Do you want me to generate a masternode private key for you? [y/n]"
+  # read DOSETUP
+# if [[ $DOSETUP =~ "n" ]] ; then
+          # read -e -p "Enter your private key:" genkey;
+              # read -e -p "Confirm your private key: " genkey2;
+# fi
 
-#Confirming match
-  if [ $genkey = $genkey2 ]; then
-     echo -e "${GREEN}MATCH! ${NC} \a" 
-else 
-     echo -e "${RED} Error: Private keys do not match. Try again or let me generate one for you...${NC} \a";exit 1
-fi
-sleep .5
-clear
+Confirming match
+  # if [ $genkey = $genkey2 ]; then
+     # echo -e "${GREEN}MATCH! ${NC} \a" 
+# else 
+     # echo -e "${RED} Error: Private keys do not match. Try again or let me generate one for you...${NC} \a";exit 1
+# fi
+# sleep .5
+# clear
 
 
 
 genkey=$3
 #Enter the new BLS genkey
 echo -e "${YELLOW}AXE Coin DIP003 Masternode Setup Script V1 for Ubuntu 16.04 LTS${NC}"
-echo -e "Enter your BLS Key"
 	read -e -p "Enter your BLS key:" genkey3;
               read -e -p "Confirm your BLS key: " genkey4;
 
@@ -181,9 +180,9 @@ rpcpassword=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 
 #Installing Daemon
  cd ~
-wget https://github.com/AXErunners/axe/releases/download/v1.4.0/axecore-1.4.0-x86_64-linux-gnu.tar.gz
-tar -xzf axecore-1.4.0-x86_64-linux-gnu.tar.gz -C ~/AXE-MN-setup
-rm -rf axecore-1.4.0-x86_64-linux-gnu.tar.gz
+wget https://github.com/AXErunners/axe/releases/download/v1.4.0.1/axecore-1.4.0.1-x86_64-linux-gnu.tar.gz
+tar -xzf axecore-1.4.0.1-x86_64-linux-gnu.tar.gz -C ~/AXE-MN-setup
+rm -rf axecore-1.4.0.1-x86_64-linux-gnu.tar.gz
  
  stop_daemon
  
