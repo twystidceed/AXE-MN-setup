@@ -204,9 +204,8 @@ sleep 10
 echo -ne '[###################] (100%)\r'
 echo -ne '\n'
     
-    #Stopping daemon to create axe.conf
+	#Stopping daemon to create axe.conf
     stop_daemon
-fi
 
 # Create axe.conf
 cat <<EOF > ~/.axecore/axe.conf
