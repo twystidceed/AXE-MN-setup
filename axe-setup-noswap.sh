@@ -157,9 +157,9 @@ rpcpassword=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 
 #Installing Daemon
  cd ~
-wget https://github.com/AXErunners/axe/releases/download/v1.4.0.1/axecore-1.4.0.1-x86_64-linux-gnu.tar.gz
-tar -xzf axecore-1.4.0.1-x86_64-linux-gnu.tar.gz -C ~/AXE-MN-setup
-rm -rf axecore-1.4.0.1-x86_64-linux-gnu.tar.gz
+wget https://github.com/AXErunners/axe/releases/download/v1.4.0.2/axecore-1.4.0.2-x86_64-linux-gnu.tar.gz
+tar -xzf axecore-1.4.0.2-x86_64-linux-gnu.tar.gz -C ~/AXE-MN-setup
+rm -rf axecore-1.4.0.2-x86_64-linux-gnu.tar.gz
  
  stop_daemon
  

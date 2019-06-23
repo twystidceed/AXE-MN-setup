@@ -175,10 +175,10 @@ else
 fi
 
 #Installing Daemon
- cd ~
-wget https://github.com/AXErunners/axe/releases/download/v1.4.0.1/axecore-1.4.0.1-x86_64-linux-gnu.tar.gz
-tar -xzf axecore-1.4.0.1-x86_64-linux-gnu.tar.gz -C ~/AXE-MN-setup
-rm -rf axecore-1.4.0.1-x86_64-linux-gnu.tar.gz
+ cd ~bin/
+wget https://github.com/AXErunners/axe/releases/download/v1.4.0.2/axecore-1.4.0.2-x86_64-linux-gnu.tar.gz
+tar -xzf axecore-1.4.0.2-x86_64-linux-gnu.tar.gz -C ~/AXE-MN-setup
+rm -rf axecore-1.4.0.2-x86_64-linux-gnu.tar.gz
  
  stop_daemon
  
