@@ -5,7 +5,7 @@
 <br><br>
 <br><br>
 <li>Copy the entire line below and paste into your ssh session or vps terminal
-<li>git clone https://github.com/twystidceed/AXE-MN-setup.git && cd AXE-MN-setup && bash axe-setup-noswap.sh
+<li>git clone https://github.com/twystidceed/AXE-MN-setup.git && cd AXE-MN-setup && bash axe-setup.sh
 <br><br>
 <li><b> Anyone using my script can update their node quickly by using the following line. </b>
 <li> Just copy and paste the line below - this will update your existing files and restart the daemon on 1.4.1
