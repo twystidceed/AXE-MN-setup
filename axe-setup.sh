@@ -226,12 +226,12 @@ rm -rf axecore-1.6.1.1-x86_64-linux-gnu.tar.gz
 stop_daemonn
  # copy binaries to Master Folder 
 cd ~
-sudo mv ~/axecore-1.6.1.1 /AVE-MN-setup
+sudo cp ~/axecore-1.6.1 /AVE-MN-setup
  # Deploy binaries to /usr/bin
  
- sudo rm ~/AXE-MN-setup/axecore-1.6.1.1/bin/axe-qt
- sudo rm ~/AXE-MN-setup/axecore-1.6.1.1/bin/test*
- sudo cp ~/AXE-MN-setup/axecore-1.6.1.1/bin/axe* /usr/bin/
+ sudo rm ~/AXE-MN-setup/axecore-1.6.1/bin/axe-qt
+ sudo rm ~/AXE-MN-setup/axecore-1.6.1/bin/test*
+ sudo cp ~/AXE-MN-setup/axecore-1.6.1/bin/axe* /usr/bin/
  sudo chmod 755 -R ~/AXE-MN-setup
  sudo chmod 755 /usr/bin/axe*
  
