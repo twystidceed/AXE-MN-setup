@@ -1,5 +1,5 @@
 #!/bin/bash
-# AXE Masternode Setup Script V2.0 for Ubuntu 16.04 LTS
+# AXE Masternode Setup Script V3.0 for Ubuntu 18.04 LTS
 #
 # Script will attempt to auto detect primary public IP address
 # and generate masternode private key unless specified in command line
@@ -47,10 +47,10 @@ function stop_daemon {
 
 
 
- if [[ $(lsb_release -d) == *16.04* ]]; then
-   UBUNTU_VERSION=16
+ if [[ $(lsb_release -d) == *18.04* ]]; then
+   UBUNTU_VERSION=18
 else
-   echo -e "${RED}You are not running Ubuntu 16.04, Installation is cancelled.${NC}"
+   echo -e "${RED}You are not running Ubuntu 18.04, Installation is cancelled.${NC}"
    exit 1
 
 fi
@@ -81,7 +81,7 @@ sleep 5
 genkey=$3
 #Enter the new BLS genkey
 clear
-echo -e "${YELLOW}AXE Coin DIP003 Masternode Setup Script V2 for Ubuntu 16.04 LTS${NC}"
+echo -e "${YELLOW}AXE Coin DIP003 Masternode Setup Script V3 for Ubuntu 18.04 LTS${NC}"
 	read -e -p "Enter your BLS key:" genkey3;
               read -e -p "Confirm your BLS key: " genkey4;
 
@@ -220,7 +220,7 @@ echo -e "${GREEN}Do you wish to install SWAP Y or N ?${NC} \n"
 #Installing Daemon
 cd ~
 wget https://github.com/AXErunners/axe/releases/download/v1.6.1.1/axecore-1.6.1.1-x86_64-linux-gnu.tar.gz
-axecore-1.6.1.1-x86_64-linux-gnu.tar.gz axecore-1.6.1.1-x86_64-linux-gnu.tar.gz 
+sudo dtrx -n -f axecore-1.6.1.1-x86_64-linux-gnu.tar.gz axecore-1.6.1.1-x86_64-linux-gnu.tar.gz 
 rm -rf axecore-1.6.1.1-x86_64-linux-gnu.tar.gz
 
 stop_daemon
