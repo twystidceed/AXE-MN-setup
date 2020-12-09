@@ -45,6 +45,8 @@ function stop_daemon {
 
 #Function detect_ubuntu
 
+
+
  if [[ $(lsb_release -d) == *16.04* ]]; then
    UBUNTU_VERSION=16
 else
@@ -52,7 +54,29 @@ else
    exit 1
 
 fi
-
+clear
+echo -e "${PURPLE}####### #     # #     #  #####  ####### ### ######  ${NC}"
+echo -e "${PURPLE}   #    #  #  #  #   #  #     #    #     #  #     # ${NC}"
+echo -e "${PURPLE}   #    #  #  #   # #   #          #     #  #     # ${NC}"
+echo -e "${PURPLE}   #    #  #  #    #     #####     #     #  #     # ${NC}"
+echo -e "${PURPLE}   #    #  #  #    #          #    #     #  #     # ${NC}"
+echo -e "${PURPLE}   #    #  #  #    #    #     #    #     #  #     # ${NC}"
+echo -e "${PURPLE}   #     ## ##     #     #####     #    ### ######  ${NC}"
+echo -e
+echo -e "${PURPLE}      #     # ### #     # ### #     #  #####  ${NC}"
+echo -e "${PURPLE}      ##   ##  #  ##    #  #  ##    # #     # ${NC}"
+echo -e "${PURPLE}      # # # #  #  # #   #  #  # #   # #       ${NC}"
+echo -e "${PURPLE}      #  #  #  #  #  #  #  #  #  #  # #  #### ${NC}"
+echo -e "${PURPLE}      #     #  #  #   # #  #  #   # # #     # ${NC}"
+echo -e "${PURPLE}      #     #  #  #    ##  #  #    ## #     # ${NC}"
+echo -e "${PURPLE}      #     # ### #     # ### #     #  #####  ${NC}"
+echo -e
+echo -e "${GREEN}$NAME Masternode Setup Script V3 for Ubuntu LTS${NC}"
+echo -e
+echo -e "${GREEN}This script contains multiple options - please choose proper selections${NC}"
+echo -e
+echo -e 
+sleep 5
 
 genkey=$3
 #Enter the new BLS genkey
@@ -154,11 +178,49 @@ echo -ne '[###################] (100%)\n'
 rpcuser=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 rpcpassword=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 
+echo -e "${YELLOW}=====================================================${NC}"
+echo -e "${YELLOW}=====================================================${NC}"
+echo -e 
+echo -e "${PURPLE}===========Optional SWAP Installation================${NC}"
+echo -e
+echo -e "${RED}Some providers do not allow you to install swap!${NC}"
+echo -e 
+echo -e "${GREEN}If you have VPS with locked swap select N to continue${NC}"
+echo -e "${GREEN}If you need to install SWAP or are unsure select Y${NC}"
+echo -e
+echo -e "${YELLOW}=====================================================${NC}"
+echo -e "${YELLOW}=====================================================${NC}"
+echo -e
 
+
+echo -e "${GREEN}Do you wish to install SWAP Y or N ?${NC} \n"
+ read SWAP
+ 
+	if [[ $SWAP =~ "y" ]] ; then
+			echo "installing SWAP"
+			if grep -q "swapfile" /etc/fstab; then
+				echo -e "${GREEN}Skipping disk swap configuration...${NC} \n"
+			else
+				echo -e "${YELLOW}Creating 2GB disk swap file. \nThis may take a few minutes!${NC} \a"
+				touch /var/swap.img
+				chmod 600 /var/swap.img
+				dd if=/dev/zero of=/var/swap.img bs=1024k count=2000
+				mkswap /var/swap.img 2> /dev/null
+				swapon /var/swap.img 2> /dev/null
+				if [ $? -eq 0 ]; then
+					echo '/var/swap.img none swap sw 0 0' >> /etc/fstab
+					echo -e "${GREEN}Swap was created successfully!${NC} \n"
+				else
+					echo -e "${RED}Operation not permitted! Optional swap was not created.${NC} \a"
+					rm /var/swap.img
+				fi
+			fi
+	fi
+	clear
 #Installing Daemon
- cd ~
+cd ~
 wget https://github.com/AXErunners/axe/releases/download/v1.6.1.1/axecore-1.6.1.1-x86_64-linux-gnu.tar.gz
-tar -xzf axecore-1.6.1.1-x86_64-linux-gnu.tar.gz -C ~/AXE-MN-setup
+axecore-1.6.1.1-x86_64-linux-gnu.tar.gz axecore-1.6.1.1-x86_64-linux-gnu.tar.gz 
 rm -rf axecore-1.6.1.1-x86_64-linux-gnu.tar.gz
 
 stop_daemon
