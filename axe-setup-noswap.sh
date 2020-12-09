@@ -241,7 +241,7 @@ echo -ne '\n'
 echo -e "${YELLOW}Installing sentinel...${NC}"
 sudo apt-get update
 sudo apt-get upgrade -y
-sudo apt-get -y install python-pip
+sudo apt-get -y install python-pip python3
 sudo apt-get -y install virtualenv
       cd ~/.axecore
 	  git clone https://github.com/AXErunners/sentinel.git
