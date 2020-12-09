@@ -282,9 +282,8 @@ listen=1
 server=1
 daemon=1
 logintimestamps=1
-maxconnections=10
+maxconnections=125
 externalip=$publicip:$PORT
-masternode=1
 masternodeblsprivkey=$genkey3
 EOF
 
