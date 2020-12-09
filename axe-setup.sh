@@ -223,9 +223,12 @@ wget https://github.com/AXErunners/axe/releases/download/v1.6.1.1/axecore-1.6.1.
 sudo dtrx -n -f axecore-1.6.1.1-x86_64-linux-gnu.tar.gz axecore-1.6.1.1-x86_64-linux-gnu.tar.gz 
 rm -rf axecore-1.6.1.1-x86_64-linux-gnu.tar.gz
 
-stop_daemon
- 
+stop_daemonn
+ # copy binaries to Master Folder 
+cd ~
+sudo mv ~/axecore-1.6.1.1 /AVE-MN-setup
  # Deploy binaries to /usr/bin
+ 
  sudo rm ~/AXE-MN-setup/axecore-1.6.1.1/bin/axe-qt
  sudo rm ~/AXE-MN-setup/axecore-1.6.1.1/bin/test*
  sudo cp ~/AXE-MN-setup/axecore-1.6.1.1/bin/axe* /usr/bin/
