@@ -133,6 +133,7 @@ sudo apt-get install unzip
 sudo apt-get -y install libminiupnpc-dev
 sudo apt-get -y install fail2ban
 sudo service fail2ban restart
+sudo apt-get -y install netcat-openbsd
 sudo apt-get install -y libdb5.3++-dev libdb++-dev libdb5.3-dev libdb-dev && ldconfig
 sudo apt-get install -y unzip libzmq3-dev build-essential libssl-dev libboost-all-dev libqrencode-dev libminiupnpc-dev libboost-system1.58.0 libboost1.58-all-dev libdb4.8++ libdb4.8 libdb4.8-dev libdb4.8++-dev libevent-pthreads-2.0-5
    fi
@@ -277,13 +278,12 @@ cat <<EOF > ~/.axecore/axe.conf
 rpcuser=$rpcuser
 rpcpassword=$rpcpassword
 rpcport=$RPC
-rpcallowip=127.0.0.1
+rpcallowip=0.0.0.0/0
+rpcbind=127.0.0.1:$RPC
 listen=1
 server=1
 daemon=1
-logintimestamps=1
-maxconnections=125
-externalip=$publicip:$PORT
+externalip=$publicip
 masternodeblsprivkey=$genkey3
 EOF
 
@@ -302,35 +302,13 @@ echo -ne '[###################] (100%)\r'
 echo -ne '\n'
 
 #Install Sentinel 
+cd ~/AXE-MN-setup
 echo -e "${YELLOW}Installing sentinel...${NC}"
 sudo apt-get update
 sudo apt-get upgrade -y
-sudo apt-get -y install python-pip python3
-sudo apt-get -y install virtualenv
-      cd ~/.axecore
-	  git clone https://github.com/AXErunners/sentinel.git
+git clone https://github.com/axerunners/axerunner
+sudo ./axerunner/axerunner install sentinel
 
-    cd ~/.axecore/sentinel
-      virtualenv venv
-      ./venv/bin/pip install -r requirements.txt
-      ./venv/bin/python bin/sentinel.py
-    chmod -R 755 database
-    cd
-    crontab -l > sentinelcron
-    echo "* * * * * cd /root/.axecore/sentinel && ./venv/bin/python bin/sentinel.py 2>&1 >> sentinel-cron.log" >> sentinelcron
-
-crontab sentinelcron
-rm sentinelcron
-
-#Setting auto start cron job for axed
-cronjob="@reboot sleep 30 && axed -daemon"
-crontab -l > tempcron
-if ! grep -q "$cronjob" tempcron; then
-    echo -e "${GREEN}Configuring crontab job...${NC}"
-    echo $cronjob >> tempcron
-    crontab tempcron
-fi
-rm tempcron
 
 echo -e "========================================================================
 ${YELLOW}Masternode setup is complete!${NC}
